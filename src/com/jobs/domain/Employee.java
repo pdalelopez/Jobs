@@ -20,4 +20,12 @@ public class Employee extends AbsStaffMember {
 		totalPaid=paymentRate.pay(salaryPerMonth);
 	}
 
+
+	@Override
+	public String toString()
+	{
+		return "Employee [id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + ", totalPaid="
+				+ totalPaid + ", salaryPerMonth=" + salaryPerMonth + "]";
+	}
+
 }

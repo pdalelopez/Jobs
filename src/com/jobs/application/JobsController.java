@@ -1,11 +1,13 @@
 package com.jobs.application;
 
-import com.jobs.domain.Employee;
+import java.util.List;
+
+import com.jobs.domain.*;
 import com.jobs.persistence.EmployeeRepository;
 
 public class JobsController {
 
-	private EmployeeRepository repository;
+	private EmployeeRepository repository = new EmployeeRepository();
 	
 	public JobsController(){
 		
@@ -17,30 +19,44 @@ public class JobsController {
 	}
 	
 	public void createEmployee(String name, String address, String phone, double salaryPerMonth) throws Exception{		
-		Employee boss = new Employee(name, address, phone,  salaryPerMonth, PaymentFactory.createPaymentRateEmployee());
-		repository.addMember(boss);
+		Employee employee = new Employee(name, address, phone,  salaryPerMonth, PaymentFactory.createPaymentRateEmployee());
+		repository.addMember(employee);
 	}
 
 	public void createManagerEmployee(String name, String address, String phone, double salaryPerMonth) throws Exception{
+		Employee manager = new Employee(name, address, phone,  salaryPerMonth, PaymentFactory.createPaymentRateManager());
+		repository.addMember(manager);
+	}
+	
+	public void createVolunteer(String name, String address, String phone) throws Exception {
 		// TODO Auto-generated method stub
-		
+		Volunteer volunteer = new Volunteer(name, address, phone);
+		repository.addMember(volunteer);
 	}
 
 
 	public void payAllEmployeers() {
-		// TODO Auto-generated method stub
+		for (AbsStaffMember member: repository.getAllMembers())
+		{
+			member.pay();
+		}
+		
 	
 	}
 
 	public String getAllEmployees() {
 		// TODO Auto-generated method stub
-		return null;
+		String allEmployees = repository.getAllMembers().toString();
+		
+		return allEmployees;
 	}
 
-	public void createVolunteer(String string, String string2, String string3) {
-		// TODO Auto-generated method stub
-		
+	public EmployeeRepository getRepository()
+	{
+		return repository;
 	}
+
+	
 	
 	
 	
