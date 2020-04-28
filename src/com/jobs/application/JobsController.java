@@ -1,7 +1,5 @@
 package com.jobs.application;
 
-import java.util.List;
-
 import com.jobs.domain.*;
 import com.jobs.persistence.EmployeeRepository;
 
@@ -41,20 +39,15 @@ public class JobsController {
 			member.pay();
 		}
 		
-	
 	}
 
 	public String getAllEmployees() {
-		// TODO Auto-generated method stub
 		String allEmployees = repository.getAllMembers().toString();
 		
 		return allEmployees;
 	}
 
-	public EmployeeRepository getRepository()
-	{
-		return repository;
-	}
+
 
 	
 	
