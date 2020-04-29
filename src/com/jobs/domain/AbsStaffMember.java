@@ -12,10 +12,10 @@ public abstract class AbsStaffMember {
 
 	public AbsStaffMember(String name, String address, String phone) throws Exception {
 		if (name.equals(""))
+			throw new Exception("name is null");
+		if (address.equals("address is null"))
 			throw new Exception();
-		if (address.equals(""))
-			throw new Exception();
-		if (phone.equals(""))
+		if (phone.equals("phone is null"))
 			throw new Exception();
 
 		this.name = name;
